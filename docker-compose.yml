@@ -1,0 +1,16 @@
+version: '3.8' 
+
+services:
+  notebook:
+      image: jupyter/base-notebook
+      ports:
+        - 8888:8888
+      volumes:
+        - .:/home/jovyan/work
+
+      environment:
+        GRANT_SUDO: "yes"
+        JUPYTER_ENABLE_LAB: "yes"
+        NB_UID: ${JUPYTER_UID:-1000}
+        NB_GID: ${JUPYTER_GID:-1000}
+      # enable sudo permissions
